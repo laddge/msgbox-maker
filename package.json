@@ -21,5 +21,9 @@
     "tslib": "^2.5.0",
     "typescript": "^5.0.2",
     "vite": "^4.3.9"
+  },
+  "dependencies": {
+    "satori": "^0.10.1",
+    "satori-html": "^0.3.2"
   }
 }
