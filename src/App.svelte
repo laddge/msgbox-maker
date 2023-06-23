@@ -1,16 +1,7 @@
 <script lang="ts">
-  import { genSvg } from './lib/genSvg'
-
-  let svg: string
-  (async () => {
-    svg = (await genSvg()).replace(/ width=".*?height=".*?"/, '')
-  })()
+  import RenderPng from './lib/RenderPng.svelte'
 </script>
 
 <main class="p-4">
-  {@html svg || ''}
+  <RenderPng />
 </main>
-
-<style>
-  :global(svg) { @apply w-full; }
-</style>
