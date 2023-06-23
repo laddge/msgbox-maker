@@ -22,4 +22,6 @@
 </script>
 
 <canvas class="hidden" />
+{#if src}
 <img {src} alt="generated png" class="w-full" />
+{/if}
