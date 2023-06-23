@@ -1,4 +1,6 @@
 <script lang="ts">
+  export let width: number, height: number, text: string
+
   import { genSvg } from './genSvg'
   import { Canvg } from 'canvg'
 
@@ -7,10 +9,10 @@
   $: {
     if (typeof window !== 'undefined') {
       (async () => {
-        const svg = await genSvg()
+        const svg = await genSvg(width, height, text)
         const canvas = document.querySelector('canvas')
-        canvas.width = 400
-        canvas.height = 300
+        canvas.width = width
+        canvas.height = height
         const ctx = canvas.getContext('2d')
         const v = Canvg.fromString(ctx, svg)
 
