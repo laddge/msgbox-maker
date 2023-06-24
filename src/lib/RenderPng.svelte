@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let width: number, height: number, text: string
+  export let width: number, height: number, title: string, text: string, button: number, icon: number
 
   import { genSvg } from './genSvg'
   import { Canvg } from 'canvg'
@@ -9,7 +9,7 @@
   $: {
     if (typeof window !== 'undefined') {
       (async () => {
-        const svg = await genSvg(width, height, text)
+        const svg = await genSvg(width, height, title, text, button, icon)
         const canvas = document.querySelector('canvas')
         canvas.width = width
         canvas.height = height
