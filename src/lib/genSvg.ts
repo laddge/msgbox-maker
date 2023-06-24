@@ -4,6 +4,7 @@ import ErrorIcon from './assets/dialog-error.png'
 import InfoIcon from './assets/dialog-info.png'
 import QuestionIcon from './assets/dialog-question.png'
 import WarningIcon from './assets/dialog-warning.png'
+import NotoSansJP from './assets/NotoSansJP-Regular.otf'
 
 const buttons = [
   ['OK'],
@@ -53,7 +54,7 @@ export const genSvg = async (width: number, height: number, title: string, text:
     fonts: [
       {
         name: 'NotoSansJP',
-        data: await fetch('/fonts/NotoSansJP-Regular.otf').then(res => res.arrayBuffer()),
+        data: await fetch(NotoSansJP).then(res => res.arrayBuffer()),
         weight: 400,
         style: 'normal',
       },
