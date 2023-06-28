@@ -9,14 +9,36 @@ import NotoSansJP from './assets/NotoSansJP-Regular.otf'
 const buttons = [
   ['OK'],
   ['OK', '<span style="transform: scaleX(.8);">キャンセル</span>'],
-  ['<span style="transform: scaleX(.8);">中止</span>(A)', '<span style="transform: scaleX(.8);">再試行</span>(R)', '<span style="transform: scaleX(.8);">無視</span>(I)'],
-  ['<span style="transform: scaleX(.8);">はい</span>(Y)', '<span style="transform: scaleX(.8);">いいえ</span>(N)', '<span style="transform: scaleX(.8);">キャンセル</span>'],
-  ['<span style="transform: scaleX(.8);">はい</span>(Y)', '<span style="transform: scaleX(.8);">いいえ</span>(N)'],
-  ['<span style="transform: scaleX(.8);">再試行</span>(R)', '<span style="transform: scaleX(.8);">キャンセル</span>'],
+  [
+    '<span style="transform: scaleX(.8);">中止</span>(A)',
+    '<span style="transform: scaleX(.8);">再試行</span>(R)',
+    '<span style="transform: scaleX(.8);">無視</span>(I)',
+  ],
+  [
+    '<span style="transform: scaleX(.8);">はい</span>(Y)',
+    '<span style="transform: scaleX(.8);">いいえ</span>(N)',
+    '<span style="transform: scaleX(.8);">キャンセル</span>',
+  ],
+  [
+    '<span style="transform: scaleX(.8);">はい</span>(Y)',
+    '<span style="transform: scaleX(.8);">いいえ</span>(N)',
+  ],
+  [
+    '<span style="transform: scaleX(.8);">再試行</span>(R)',
+    '<span style="transform: scaleX(.8);">キャンセル</span>',
+  ],
 ]
 
-export const genSvg = async (width: number, height: number, title: string, text: string, button: number, icon: number) => await satori(
-  html(`
+export const genSvg = async (
+  width: number,
+  height: number,
+  title: string,
+  text: string,
+  button: number,
+  icon: number
+) =>
+  await satori(
+    html(`
     <div tw="flex flex-col h-full bg-white border border-blue-500">
       <div tw="flex text-xl p-3">
         <div class="grow flex pl-1">
@@ -26,7 +48,13 @@ export const genSvg = async (width: number, height: number, title: string, text:
       </div>
       <div tw="grow flex text-xl px-8">
         <div tw="flex items-center">
-          ${icon ? '<img src="' + [ErrorIcon, InfoIcon, QuestionIcon, WarningIcon][icon - 1] + '" tw="h-14 mr-4" />' : ''}
+          ${
+            icon
+              ? '<img src="' +
+                [ErrorIcon, InfoIcon, QuestionIcon, WarningIcon][icon - 1] +
+                '" tw="h-14 mr-4" />'
+              : ''
+          }
         </div>
         <div tw="grow flex flex-wrap text-xl py-16">
           ${text.replace(/\n/g, '<div tw="w-full flex" />')}
@@ -38,26 +66,33 @@ export const genSvg = async (width: number, height: number, title: string, text:
             ${buttons[button][0]}
           </div>
         </div>
-        ${buttons[button].slice(1).map(btn => '\
+        ${buttons[button]
+          .slice(1)
+          .map(
+            (btn) =>
+              '\
         <div tw="flex border w-32 ml-3">\
           <div tw="flex justify-center border-2 border-t-[#e6e6e6] border-r-[#898989] border-b-[#898989] border-l-[#e6e6e6] w-full">\
-            ' + btn + '\
+            ' +
+              btn +
+              '\
           </div>\
         </div>'
-        ).join('')}
+          )
+          .join('')}
       </div>
     </div>
   `),
-  {
-    width,
-    height,
-    fonts: [
-      {
-        name: 'NotoSansJP',
-        data: await fetch(NotoSansJP).then(res => res.arrayBuffer()),
-        weight: 400,
-        style: 'normal',
-      },
-    ],
-  },
-)
+    {
+      width,
+      height,
+      fonts: [
+        {
+          name: 'NotoSansJP',
+          data: await fetch(NotoSansJP).then((res) => res.arrayBuffer()),
+          weight: 400,
+          style: 'normal',
+        },
+      ],
+    }
+  )
