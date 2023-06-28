@@ -1,5 +1,10 @@
 <script lang="ts">
-  export let width: number, height: number, title: string, text: string, button: number, icon: number
+  export let width: number,
+    height: number,
+    title: string,
+    text: string,
+    button: number,
+    icon: number
 
   import { genSvg } from './genSvg'
   import { Canvg } from 'canvg'
@@ -25,5 +30,5 @@
 
 <canvas class="hidden" />
 {#if src}
-<img {src} alt="generated png" class="w-full" />
+  <img {src} alt="generated png" class="w-full" />
 {/if}
