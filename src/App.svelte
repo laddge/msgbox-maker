@@ -7,7 +7,7 @@
 
   let width: number = 500
   let row: number = 1
-  $: height = 300 + (row - 1) * 40
+  $: height = 310 + (row - 1) * 40
   let title: string = 'Title'
   let text: string = 'Text'
   let button: number = 0
